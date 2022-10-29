@@ -1,0 +1,28 @@
+@media(min-width:350px) and (max-width:700px) {
+    .mybtn{
+        display: "flex";
+        justify-content: "space-between";
+        align-items: "center";
+        margin-bottom: 43px
+    }
+    .vikasbtn{
+        font-size: 14px;
+        padding: 10px;
+        margin: 0px;
+    }
+}
+
+@media(min-width:760px) and (max-width:1050px){
+    .mybtn{
+        display: "flex";
+        justify-content: "space-between";
+        align-items: "center";
+        margin-bottom: 43px
+    }
+    .vikasbtn{
+        font-size: 14px;
+        padding: 10px;
+        margin: 0px;
+    }
+
+}

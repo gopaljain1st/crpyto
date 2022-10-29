@@ -12,6 +12,7 @@ import {
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
+import "./assests/css/new.css";
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -41,10 +42,10 @@ const Header = () => {
               onClick={() => navigate("/")}
               className={classes.title}
               variant="h5"
-              
             >
-              Crypto Tracker
+              <div className="banner">Crypto Tracker</div>
             </Typography>
+
             <Select
               variant="outlined"
               style={{

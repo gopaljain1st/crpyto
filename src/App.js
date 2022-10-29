@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Coin from "./Pages/Coin";
 import Header from "./components/Header";
 import Home from "./Pages/Home";
+import { Helmet } from "react-helmet";
 
 const useStyles = makeStyles(() => ({
   App: {
@@ -20,6 +21,13 @@ function App() {
     <BrowserRouter>
       <div className={classes.App}>
         <Header />
+        <Helmet>
+          <title>Crypto Tracker</title>
+          <meta
+            name="description"
+            content="Get all the info  regarding your favoourite crypto currency"
+          />
+        </Helmet>
         <Routes>
           <Route path="/" element={<Home />} exact />
           <Route path="/coins/:id" element={<Coin />} exact />

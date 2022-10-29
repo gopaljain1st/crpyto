@@ -7,6 +7,8 @@ import { LinearProgress, makeStyles, Typography } from "@material-ui/core";
 import CoinInfo from "../components/CoinInfo";
 import ReactHtmlParser from "react-html-parser";
 import { numberWithCommas } from "../components/Banner/Carousel";
+import { Helmet } from "react-helmet";
+import "../components/assests/css/new.css";
 
 const Coin = () => {
   const { id } = useParams();
@@ -79,12 +81,28 @@ const Coin = () => {
 
   return (
     <div className={classes.container}>
+      <Helmet>
+        <title>Coins Information</title>
+        <meta
+          name="description"
+          content="All the information related to your selected crypto coin"
+        />
+        <meta
+          name="keywords"
+          content="coininfo , charts , history , prices , treding "
+        />
+      </Helmet>
       <div className={classes.sidebar}>
         <img
           src={coin?.image.large}
           alt={coin?.name}
           height="200"
-          style={{ marginBottom: 20  ,  display:"flex" , justifyContent:"center", alignItems:'center'}}
+          style={{
+            marginBottom: 20,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
           className="img-fluid"
         />
         <Typography variant="h3" className={classes.heading}>
@@ -96,31 +114,57 @@ const Coin = () => {
         <div className={classes.marketData}>
           <span style={{ display: "flex" }}>
             <Typography variant="h5" className={classes.heading}>
+            <div className="rank1">
               Rank :
+              </div>
             </Typography>
             &nbsp; &nbsp;
-            <Typography variant="h5" style={{ fontFamily: "Montserrat" ,marginBottom: 20, }}>
+            <Typography
+              variant="h5"
+              style={{ fontFamily: "Montserrat", marginBottom: 20 }}
+            >
+            <div className="rank">
               {coin?.market_cap_rank}
+              </div>
             </Typography>
           </span>
           <span style={{ display: "flex" }}>
-            <Typography style={{fontWeight:'bold' , fontFamily: "Montserrat" ,marginBottom: 20, fontSize:"20px"}}>
-              Current Price :
+            <Typography
+              style={{
+                fontWeight: "bold",
+                fontFamily: "Montserrat",
+                marginBottom: 20,
+                fontSize: "20px",
+              }}
+            >
+              <div className="rank1">Current Price :</div>
             </Typography>
             &nbsp; &nbsp;
             <Typography variant="h5" style={{ fontFamily: "Montserrat" }}>
-              {symbol}{" "}
-              {numberWithCommas(
-                coin?.market_data.current_price[currency.toLowerCase()]
-              )}
+              <div className="rank">
+                {symbol}{" "}
+                {numberWithCommas(
+                  coin?.market_data.current_price[currency.toLowerCase()]
+                )}
+              </div>
             </Typography>
           </span>
           <span style={{ display: "flex" }}>
-            <Typography style={{fontWeight:'bold' , fontFamily: "Montserrat" ,marginBottom: 20, fontSize:"18px"}}>
+            <Typography
+              style={{
+                fontWeight: "bold",
+                fontFamily: "Montserrat",
+                marginBottom: 20,
+                fontSize: "18px",
+              }}
+            >
+            <div className="rank1">
               Market Cap :
+              </div>
             </Typography>
             &nbsp; &nbsp;
             <Typography variant="h5" style={{ fontFamily: "Montserrat" }}>
+            <div className="rank">
               {symbol}{" "}
               {numberWithCommas(
                 coin?.market_data.market_cap[currency.toLowerCase()]
@@ -128,6 +172,7 @@ const Coin = () => {
                   .slice(0, -6)
               )}
               M
+              </div>
             </Typography>
           </span>
         </div>

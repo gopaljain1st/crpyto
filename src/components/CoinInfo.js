@@ -13,6 +13,7 @@ import {
   makeStyles,
   ThemeProvider,
 } from "@material-ui/core";
+import { Helmet } from "react-helmet";
 
 const CoinInfo = ({ coin }) => {
   const [historicalData, setHistoricalData] = useState();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CoinList } from "../config/Api";
 import { CryptoState } from "../CryptoContext";
-import './assests/css/new.css';
+import "./assests/css/new.css";
 import axios from "axios";
 import {
   //Container,
@@ -56,7 +56,7 @@ const Coinstable = () => {
         backgroundColor: "#131111",
       },
       fontFamily: "Montserrat",
-      fontSize: "12px"
+      fontSize: "12px",
     },
     pagination: {
       "& .MuiPaginationItem-root": {
@@ -65,7 +65,6 @@ const Coinstable = () => {
     },
   });
 
-  
   const classes = useStyles();
 
   const finalData = coins
@@ -76,9 +75,8 @@ const Coinstable = () => {
         <tr
           onClick={() => navigate(`/coins/${row.id}`)}
           className={classes.row}
-          style={{color:'white', align:"left"}}
+          style={{ color: "white", align: "left" }}
           key={row.name}
-          
         >
           <td>
             <img
@@ -99,7 +97,8 @@ const Coinstable = () => {
               <span style={{ color: "darkgrey" }}>{row.name}</span>
             </div>
           </td>
-          <td >
+
+          <td className="mid1">
             {symbol} {numberWithCommas(row.current_price.toFixed(1))}
           </td>
           <td
@@ -112,14 +111,14 @@ const Coinstable = () => {
             {row.price_change_percentage_24h.toFixed(2)}%
           </td>
           <td>
-            {symbol} {numberWithCommas(row.market_cap.toString().slice(0,3))}M
+            {symbol} {numberWithCommas(row.market_cap.toString().slice(0, 3))}M
           </td>
         </tr>
       );
     });
 
   return (
-    <ThemeProvider theme={darkTheme}  >
+    <ThemeProvider theme={darkTheme}>
       <div style={{ textAlign: "center" }}>
         <Typography
           variant="h5"
@@ -128,36 +127,45 @@ const Coinstable = () => {
             fontFamily: "Montserrat",
           }}
         >
-          Cryptocurrency Prices by Market Cap
+          <div className="market"> Cryptocurrency Prices by Market Cap</div>
         </Typography>
         {loading ? (
           <LinearProgress style={{ backgroundColor: "gold" }} />
-        ) :(
-        <table class="table  mytable" >
-          <thead style={{ backgroundColor: "#EEBC1D" }}>
-            <tr>
-              <th scope="col">Coin</th>
-              <th scope="col">Price</th>
-              <th scope="col">24h Change</th>
-              <th scope="col">Market Cap</th>
-            </tr>
-          </thead>
-          <tbody>{finalData}</tbody>
-        </table>)}
+        ) : (
+          <table class="table  mytable">
+            <thead style={{ backgroundColor: "#EEBC1D" }}>
+              <tr className="theader">
+                <th scope="col" className="coin">
+                  Coin
+                </th>
+                <th scope="col" className="price">
+                  Price
+                </th>
+                <th scope="col" className="change">
+                  24h Change
+                </th>
+                <th scope="col" className="cap">
+                  Market Cap
+                </th>
+              </tr>
+            </thead>
+            <tbody>{finalData}</tbody>
+          </table>
+        )}
         <div className="container">
-        <Pagination
-          style={{
-            padding: 10,
-            display: "flex",
-            justifyContent: "center ",
-          }}
-          classes={{ ul: classes.pagination }}
-          count={(coins.length / 10).toFixed(0)}
-          onChange={(_, value) => {
-            setPage(value);
-            window.scroll(0, 450);
-          }}
-        />
+          <Pagination
+            style={{
+              padding: 10,
+              display: "flex",
+              justifyContent: "center ",
+            }}
+            classes={{ ul: classes.pagination }}
+            count={(coins.length / 10).toFixed(0)}
+            onChange={(_, value) => {
+              setPage(value);
+              window.scroll(0, 450);
+            }}
+          />
         </div>
       </div>
     </ThemeProvider>
